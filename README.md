@@ -1,151 +1,181 @@
-
-# Guitarla (TypeScript + React + Vite)
+# GuitarLA 🎸
 
 [![CI](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml)
-[![Build Status](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9+-blue.svg)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.2+-61DAFB.svg)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.2+-646CFF.svg)](https://vitejs.dev/)
 
-## The project
+A modern, type-safe e-commerce demonstration application built with React 19, TypeScript, and Vite. This project showcases a complete shopping cart system for a guitar store, featuring state management, local persistence, and responsive design.
 
-Guitarla is a small e-commerce demo built with React, TypeScript and Vite. It showcases a simple product catalog of guitars, a cart system, and a lightweight project structure for learning or prototyping.
+## ✨ Features
 
-## Features
+- **🛒 Shopping Cart System** - Full CRUD operations with localStorage persistence
+- **🎸 Product Catalog** - Responsive grid layout with detailed guitar information
+- **⚛️ Modern React Architecture** - Component-based design with custom hooks
+- **🔒 Type Safety** - Complete TypeScript implementation with strict typing
+- **🚀 Performance Optimized** - Fast refresh, code splitting, and memoized calculations
+- **📱 Responsive Design** - Mobile-first CSS with Bootstrap utilities
+- **🔄 State Persistence** - Automatic cart data synchronization with localStorage
 
-- **Product catalog:** Static product list in `src/data/db.ts`.
-- **Add to cart:** Component-level cart interactions using React state/hooks.
-- **TypeScript:** Typed components and models in `src/types`.
-- **Vite:** Fast dev server and production build.
+## 🏗️ Architecture
 
-## Tech Stack
+### Core Components
+- **`App.tsx`** - Main application container with routing
+- **`Header.tsx`** - Navigation with integrated cart display
+- **`Guitar.tsx`** - Individual product card component
+- **`GuitarList.tsx`** - Product grid container
 
-- React 19
-- TypeScript
-- Vite
-- ESLint
+### State Management
+- **`useCart.ts`** - Custom hook managing cart operations and persistence
+- **`constants.ts`** - Centralized configuration values
+- **`types/index.ts`** - Shared TypeScript interfaces
 
-## Quick Start
+### Data Layer
+- **`db.ts`** - Static product catalog (12 guitar models)
 
-Requirements: Node.js 18+ and npm.
+## 🛠️ Tech Stack
 
-Install dependencies:
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 19.2.0 | UI framework |
+| **TypeScript** | 5.9+ | Type safety |
+| **Vite** | 7.2+ | Build tool & dev server |
+| **React Router** | 7.13.0 | Client-side routing |
+| **ESLint** | 9.39+ | Code linting |
+| **Bootstrap CSS** | Utilities | Responsive styling |
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/mrtripping/guitarla-ts.git
+cd guitarla-ts
+
+# Install dependencies
 npm install
-```
 
-Run dev server:
-
-```bash
+# Start development server
 npm run dev
 ```
 
-Build for production:
+### Available Scripts
+
+```bash
+# Development
+npm run dev          # Start dev server (http://localhost:5173)
+
+# Building
+npm run build        # Production build
+npm run preview      # Preview production build
+
+# Code Quality
+npm run lint         # ESLint analysis
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # React UI components
+│   ├── Header.tsx      # Navigation with cart
+│   ├── Guitar.tsx      # Product card
+│   └── GuitarList.tsx  # Product grid
+├── hooks/              # Custom React hooks
+│   └── useCart.ts      # Cart state management
+├── config/             # Configuration files
+│   └── constants.ts    # App constants
+├── data/               # Static data
+│   └── db.ts           # Product catalog
+├── types/              # TypeScript definitions
+│   └── index.ts        # Shared interfaces
+├── App.tsx             # Main application component
+└── main.tsx            # Application entry point
+```
+
+## 🔧 Development
+
+### Type Safety
+The project uses strict TypeScript configuration with:
+- Complete interface coverage for all data structures
+- Generic typing for reusable components
+- Type-safe event handlers and props
+
+### Performance Optimizations
+- `useMemo` for expensive calculations (cart totals)
+- Component memoization patterns
+- Optimistic UI updates
+- Efficient state management patterns
+
+### State Management Pattern
+```typescript
+// Custom hook encapsulating all cart logic
+const { cart, addToCart, removeFromCart, /* ... */ } = useCart();
+
+// Automatic localStorage persistence
+useEffect(() => {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}, [cart]);
+```
+
+## 🧪 Testing Strategy
+
+The project is structured to facilitate testing:
+- Pure functions in custom hooks
+- Isolated component logic
+- Mockable data layer
+- Type-safe interfaces
+
+## 🚀 Deployment
+
+### Production Build
 
 ```bash
 npm run build
+# Output: dist/ directory
 ```
 
-Preview the production build locally:
+### Deployment Options
+- **Static hosting**: Vercel, Netlify, GitHub Pages
+- **CDN**: AWS S3 + CloudFront
+- **Docker**: Multi-stage builds available
 
+### Environment Variables
 ```bash
-npm run preview
+# .env.example
+VITE_API_URL=https://api.example.com
+VITE_APP_TITLE=GuitarLA
 ```
 
-Lint the project:
+## 🤝 Contributing
 
-```bash
-npm run lint
-```
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
 
-## Project Structure
+### Code Standards
+- Follow ESLint configuration
+- Use TypeScript strict mode
+- Write meaningful commit messages
+- Maintain component naming conventions
 
-- `src/` — application source
-  - `data/db.ts` — static product data
-  - `components/` — React UI components (e.g. `Guitar.tsx`, `Header.tsx`)
-  - `hooks/` — custom hooks (cart logic)
-  - `types/` — shared TypeScript types
+## 📄 License
 
-## Notable Files
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- `package.json` — scripts and dependencies
-- `vite.config.ts` — Vite configuration
+## 🔗 Related Projects
 
-## Contributing
-
-Contributions are welcome. Open an issue or submit a PR with a clear description of the change.
-
-## License
-
-This project does not include a license file. Add a `LICENSE` if you want to make usage terms explicit.
+- [React Documentation](https://react.dev/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [Vite Guide](https://vitejs.dev/guide/)
 
 ---
-If you'd like, I can add a GitHub Actions workflow for CI, badges, or expand the README with screenshots and deployment steps.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Built with ❤️ using modern web technologies**
