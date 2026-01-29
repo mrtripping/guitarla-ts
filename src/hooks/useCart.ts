@@ -1,10 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { db } from "../data/db";
+import { MAX_ITEMS, MIN_ITEMS } from "../config/constants";
 import type { Guitar, CartItem } from "../types";
 
 export const useCart = () => {
-  const MAX_ITEMS = 5;
-  const MIN_ITEMS = 1;
 
   const [cart, setCart] = useState(initialCart);
   const [data] = useState(db);
@@ -34,30 +33,25 @@ export const useCart = () => {
   }
 
   function increaseQuantity(id: CartItem["id"]) {
-    const updatedCart = cart.map((item) => {
-      if (item.id === id && item.quantity < MAX_ITEMS) {
-        return {
-          ...item,
-          quantity: item.quantity + MIN_ITEMS,
-        };
-      }
-      return item;
-    });
+    const updatedCart = cart.map((item) => 
+      item.id === id && item.quantity < MAX_ITEMS 
+        ? { ...item, quantity: item.quantity + 1 } 
+        : item
+    );
     setCart(updatedCart);
   }
 
   function decreaseQuantity(id: CartItem["id"]) {
-    const item: CartItem | undefined = cart.find((item) => item.id === id);
-
-    if (item?.quantity === MIN_ITEMS) {
-      removeFromCart(id);
-      return;
-    }
-
-    const updatedCart = cart.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
-    );
-
+    const updatedCart = cart.map((item) => {
+      if (item.id === id && item.quantity > MIN_ITEMS) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      if (item.id === id && item.quantity === MIN_ITEMS) {
+        return null;
+      }
+      return item;
+    }).filter(Boolean) as CartItem[];
+    
     setCart(updatedCart);
   }
 
@@ -76,7 +70,6 @@ export const useCart = () => {
   );
   return {
     data,
-    initialCart,
     cart,
     addToCart,
     removeFromCart,
