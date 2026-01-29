@@ -1,8 +1,8 @@
 
 # Guitarla (TypeScript + React + Vite)
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
-[![Build Status](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml)
+[![Build Status](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml)
 
 Replace mrtripping/reactla-ts` in the badge URLs with your GitHub owner and repository name after pushing.
 
