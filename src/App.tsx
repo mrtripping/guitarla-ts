@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Guitar from "./components/Guitar";
+import GuitarList from "./components/GuitarList";
 import { useCart } from "./hooks/useCart";
 
 function App() {
@@ -26,15 +26,7 @@ function App() {
         isEmpty={isEmpty}
         cartTotal={cartTotal}
       />
-      <main className="container-xl mt-5">
-        <h2 className="text-center">Nuestra Colección</h2>
-
-        <div className="row mt-5">
-          {data.map((guitar) => (
-            <Guitar guitar={guitar} addToCart={addToCart} key={guitar.id} />
-          ))}
-        </div>
-      </main>
+      <GuitarList data={data} addToCart={addToCart} />
 
       <footer className="bg-dark mt-5 py-5">
         <div className="container-xl">
