@@ -4,7 +4,7 @@
 [![CI](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml)
 [![Build Status](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/mrtripping/guitarla-ts/actions/workflows/ci.yml)
 
-Replace mrtripping/reactla-ts` in the badge URLs with your GitHub owner and repository name after pushing.
+## The project
 
 Guitarla is a small e-commerce demo built with React, TypeScript and Vite. It showcases a simple product catalog of guitars, a cart system, and a lightweight project structure for learning or prototyping.
 
